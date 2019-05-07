@@ -14,26 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.kirklund.junit4;
+package io.github.kirklund.junitparams;
 
-import java.util.Arrays;
+import junitparams.JUnitParamsRunner;
+import org.junit.runner.RunWith;
 
-import org.junit.runners.Parameterized.Parameters;
-
-/**
- * This class does NOT actually run as a test. It just shows some newer syntax for parameters.
- */
-public class ParametersTest {
-
-  // requires 4.13-beta-3
-  @Parameters
-  public static Iterable<? extends Object> iterable() {
-    return Arrays.asList("first test", "second test");
-  }
-
-  // requires 4.13-beta-3
-  @Parameters
-  public static Object[] array() {
-    return new Object[] { "first test", "second test" };
-  }
+@RunWith(JUnitParamsRunner.class)
+public class FibonacciDelimitersTest {
 }

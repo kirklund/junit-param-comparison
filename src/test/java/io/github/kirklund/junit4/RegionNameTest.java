@@ -19,6 +19,7 @@ package io.github.kirklund.junit4;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -45,8 +46,8 @@ public class RegionNameTest {
   public int numberOfPuts;
 
   @Parameters(name = "Parameters-{index}_number-{0}")
-  public static Iterable<Object[]> values() {
-    return Arrays.asList(new Object[][]{ {0}, {1}, {10} });
+  public static Collection<Integer> values() {
+    return Arrays.asList(0, 1, 10);
   }
 
   @Rule

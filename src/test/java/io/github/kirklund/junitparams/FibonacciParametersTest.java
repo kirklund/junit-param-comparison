@@ -30,21 +30,18 @@ import org.junit.runner.RunWith;
 public class FibonacciParametersTest {
 
   @Test
-  @Parameters({"0, 0", "1, 1", "2, 1", "3, 2", "4, 3", "5, 5", "6, 8"})
+  @Parameters(method="provideFibonacciSequence_objectArray")
   @TestCaseName("{method}({params})")
-  public void fibonacciSequence_spaces(int indexInSequence, int expectedResult) {
+  public void fibonacciSequence_withObjectArray(int indexInSequence, int expectedResult) {
     int result = MathUtils.fibonacci(indexInSequence);
 
     assertThat(result).isEqualTo(expectedResult);
   }
 
-  @Test
-  @Parameters({"0|0", "1|1", "2|1", "3|2", "4|3", "5|5", "6|8"})
-  @TestCaseName("{method}({params})")
-  public void fibonacciSequence_pipes(int indexInSequence, int expectedResult) {
-    int result = MathUtils.fibonacci(indexInSequence);
-
-    assertThat(result).isEqualTo(expectedResult);
+  private Object[] provideFibonacciSequence_objectArray() {
+    return new Object[][] {
+        {0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 3}, {5, 5}, {6, 8}
+    };
   }
 
   @Test
@@ -57,23 +54,23 @@ public class FibonacciParametersTest {
   }
 
   // implicit parametersFor method
-  public Object[] parametersForFibonacciSequence() {
-    return new Object[][]{
+  private Integer[][] parametersForFibonacciSequence() {
+    return new Integer[][] {
         {0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 3}, {5, 5}, {6, 8}
     };
   }
 
   @Test
-  @Parameters(method="provideFibonacciSequence")
+  @Parameters(method="provideFibonacciSequence_integerArray")
   @TestCaseName("{method}({params})")
-  public void fibonacciSequence_withMethod(int indexInSequence, int expectedResult) {
+  public void fibonacciSequence_withIntegerArray(int indexInSequence, int expectedResult) {
     int result = MathUtils.fibonacci(indexInSequence);
 
     assertThat(result).isEqualTo(expectedResult);
   }
 
-  public Object[] provideFibonacciSequence() {
-    return new Object[][]{
+  private Integer[][] provideFibonacciSequence_integerArray() {
+    return new Integer[][] {
         {0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 3}, {5, 5}, {6, 8}
     };
   }
@@ -87,9 +84,10 @@ public class FibonacciParametersTest {
     assertThat(result).isEqualTo(expectedResult);
   }
 
+  // must be public
   public static class Provider {
 
-    public static Object[] provideFibonacciSequence() {
+    private static Object[] provideFibonacciSequence() {
       return new Object[][]{
           {0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 3}, {5, 5}, {6, 8}
       };
@@ -105,6 +103,9 @@ public class FibonacciParametersTest {
     assertThat(result).isEqualTo(expectedResult);
   }
 
+  /**
+   * Do not use this syntax. Native file path.
+   */
   @Test
   @FileParameters("src/test/resources/io/github/kirklund/junitparams/fibonacci.csv")
   @TestCaseName("{method}({params})")

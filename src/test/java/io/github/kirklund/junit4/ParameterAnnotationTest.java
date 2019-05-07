@@ -19,6 +19,7 @@ package io.github.kirklund.junit4;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import io.github.kirklund.math.MathUtils;
 import org.junit.Test;
@@ -37,13 +38,9 @@ public class ParameterAnnotationTest {
   public boolean expectedResult;
 
   @Parameters(name = "Parameters({index}): number={0}, expectedResult={1}")
-  public static Iterable<Object[]> values() {
+  public static Collection<Object[]> values() {
     return Arrays.asList(new Object[][]{
-        {2, true},
-        {6, false},
-        {19, true},
-        {22, false},
-        {23, true}
+        {2, true}, {6, false}, {19, true}, {22, false}, {23, true}
     });
   }
 

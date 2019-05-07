@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 public class PrimeNumberTest {
 
   @Test
-  @Parameters({"2, true", "6, false", "19,true", "22,false", "23,true"})
+  @Parameters({"2, true", "6, false", "19, true", "22, false", "23, true"})
   @TestCaseName("{method}({params})")
   public void isPrimeReturnsTrueIfNumberIsPrime(int number, boolean expectedResult) {
     boolean result = MathUtils.isPrime(number);

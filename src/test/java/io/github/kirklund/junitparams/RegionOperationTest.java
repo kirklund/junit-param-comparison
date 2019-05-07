@@ -82,6 +82,7 @@ public class RegionOperationTest {
       return keyExistsAfterwards;
     }
   }
+
   @Test
   @Parameters({"NOTHING", "INVALIDATE", "DESTROY", "CLEAR"})
   @TestCaseName("{method}({params})")

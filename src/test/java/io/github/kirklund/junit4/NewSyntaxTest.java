@@ -14,26 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.kirklund.junitparams;
+package io.github.kirklund.junit4;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
 
-import io.github.kirklund.math.MathUtils;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import junitparams.naming.TestCaseName;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized.Parameters;
 
-@RunWith(JUnitParamsRunner.class)
-public class FibonacciTest {
+/**
+ * This class does NOT actually run as a test. It just shows some newer syntax for parameters.
+ */
+public class NewSyntaxTest {
 
-  @Test
-  @Parameters({"0,0", "1,1", "2,1", "3,2", "4,3", "5,5", "6,8"})
-  @TestCaseName("{method}({params})")
-  public void fibonacciSequence(int indexInSequence, int expectedResult) {
-    int result = MathUtils.fibonacci(indexInSequence);
+  // requires 4.13-beta-3
+  @Parameters
+  public static Iterable<? extends Object> iterable() {
+    return Arrays.asList("first test", "second test");
+  }
 
-    assertThat(result).isEqualTo(expectedResult);
+  // requires 4.13-beta-3
+  @Parameters
+  public static Object[] array() {
+    return new Object[] { "first test", "second test" };
   }
 }

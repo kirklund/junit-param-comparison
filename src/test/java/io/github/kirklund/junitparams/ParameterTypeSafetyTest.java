@@ -22,15 +22,17 @@ import io.github.kirklund.math.MathUtils;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
 public class ParameterTypeSafetyTest {
 
+  /**
+   * This test will fail because 2nd parameter type is incorrect.
+   */
   @Test
-  @Parameters({"0,0", "1,1", "2,1", "3,2", "4,3", "5,5", "6,8"})
+  @Parameters({"0, 0", "1, 1", "2, 1", "3, 2", "4, 3", "5, 5", "6, 8"})
   @TestCaseName("{method}({params})")
   public void fibonacciSequence(int indexInSequence, boolean expectedResult) {
     int result = MathUtils.fibonacci(indexInSequence);
