@@ -56,7 +56,7 @@ public class RegionNameTest {
 
   @Test
   @Parameters({"0", "1", "10",})
-  @TestCaseName("{method}_params-{params}")
+  @TestCaseName("{method}_Parameters-{index}_number-{params}")
   public void performPuts(int numberOfPuts) {
     for (int i = 0; i < numberOfPuts; i++) {
       region.put("key-" + i, "value-" + i);

@@ -44,7 +44,7 @@ public class RegionNameTest {
   @Parameter
   public int numberOfPuts;
 
-  @Parameters(name = "_parameters-{index}_number-{0}_expectedResult-{1}")
+  @Parameters(name = "Parameters-{index}_number-{0}")
   public static Iterable<Object[]> values() {
     return Arrays.asList(new Object[][]{ {0}, {1}, {10} });
   }
